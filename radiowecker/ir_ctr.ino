@@ -390,14 +390,14 @@
       }//!new command?...
     }
 //public
- //setup_IR(...
-void setup_IR(){
+  //setup_IR(...
+    void setup_IR(){
       //bose.begin();
       peaq.begin();
-}
- //loop_IR(...
-void loop_IR(){
-  //getBoseCode();
-  getPeaqCode();
-}
+    }
+  //loop_IR(...
+    void loop_IR(){
+      //getBoseCode();
+      getPeaqCode();
+    }
 //EOF
