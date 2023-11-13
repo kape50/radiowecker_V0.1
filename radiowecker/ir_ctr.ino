@@ -391,13 +391,13 @@
     }
 //public
  //setup_IR(...
-  void setup_IR(){
-    //bose.begin();
-    peaq.begin();
-  }
+    void setup_IR(){
+      //bose.begin();
+      peaq.begin();
+    }
  //loop_IR(...
-  void loop_IR(){
-    //getBoseCode();
-    getPeaqCode();
-  }
+    void loop_IR(){
+      //getBoseCode();
+      getPeaqCode();
+    }
 //EOF
