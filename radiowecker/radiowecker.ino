@@ -140,6 +140,8 @@ void setup() {
   if (curStation >= STATIONS) curStation = 0; //check to avoid invalid station number
   actStation = curStation;   //set active station to current station 
   Serial.printf("station %i, gain %i, ssid %s, ntp %s\n", curStation, curGain, ssid.c_str(), ntp.c_str());
+  //emulated on touch event with a ir remote controll
+  setup_IR();
   //run setup functions in the sub parts
   setup_audio(); //setup audio streams
   setup_display(); //setup display interface
@@ -179,8 +181,8 @@ void setup() {
   //setup the web server and the over the air update
   setup_webserver();
   setup_ota();
-  //remember the tick count for the timed event
-  tick = millis();
+  //arrange a special tick for the first timed event in the later loop()
+  tick=millis()-ti.tm_sec*1000;
   start_conf = 0;
 }
 
@@ -194,6 +196,8 @@ void loop() {
   webserver_loop();
   //check for touch events
   touch_loop();
+  //emulated on touch event with a ir remote controll
+  loop_IR();
   //after 10 seconds switch back from config screen to clock screen
   if (!clockmode && ((millis() - start_conf) > 10000)) {
     showClock();
